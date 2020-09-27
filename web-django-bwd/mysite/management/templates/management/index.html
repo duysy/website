@@ -1,0 +1,242 @@
+{%extends "management/menubar.html"%}
+{%load static%}
+{%block content%}
+
+
+<header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>
+            <i class="fas fa-cog"></i> Dashboard
+          </h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+   <!-- ACTIONS -->
+   <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
+            <i class="fas fa-plus"></i> Add Post
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="{%url 'management:customers'%}" class="btn btn-success btn-block" >
+            <i class="fas fa-plus"></i> View Customer
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="{%url 'management:comments'%}" class="btn btn-warning btn-block" >
+            <i class="fas fa-plus"></i> View Comments
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- POSTS -->
+  <section id="posts">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <h4>Latest Posts</h4>
+            </div>
+            <div style=" height:400px; overflow:auto;">
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              {%if phong %}
+              {% for i in phong%}
+                <tr>
+                  <td>{{i.id}}</td>
+                  <td>{{i.So_ten_phong}}</td>
+                  <td>{{i.Loai_phong}}</td>
+                  <td>{{i.Ngay_dang}}</td>
+                  <td>
+                    <a href="details.html" class="btn btn-secondary">
+                      <i class="fas fa-angle-double-right"></i> Details
+                    </a>
+                  </td>
+                </tr>
+              {%endfor%}
+              {%else%}
+              <tr>
+                  <td>No information</td>
+                </tr>
+              {%endif%}
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+        <div class="col-md-3">
+          <div class="card text-center bg-primary text-white mb-3">
+            <div class="card-body">
+              <h3>Posts</h3>
+              <h4 class="display-4">
+                <i class="fas fa-pencil-alt"></i> {{phong|length}}
+              </h4>
+              <a href="posts.html" class="btn btn-outline-light btn-sm">View</a>
+            </div>
+          </div>
+
+          <div class="card text-center bg-success text-white mb-3">
+            <div class="card-body">
+              <h3>Categories</h3>
+              <h4 class="display-4">
+                <i class="fas fa-folder"></i> 4
+              </h4>
+              <a href="categories.html" class="btn btn-outline-light btn-sm">View</a>
+            </div>
+          </div>
+
+          <div class="card text-center bg-warning text-white mb-3">
+            <div class="card-body">
+              <h3>Customers</h3>
+              <h4 class="display-4">
+                <i class="fas fa-users"></i> {{cus|length}}
+              </h4>
+              <a href="users.html" class="btn btn-outline-light btn-sm">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--MODAL-->
+
+  <!--Post Modal-->
+
+
+
+  <div class="modal fade" id="addPostModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Add Post</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{%url 'management:addpost'%}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="title">Room name</label>
+              <input type="text" class="form-control" name="Room name">
+            </div>
+             <div class="form-group">
+              <label for="title">Name Hotel</label>
+              <input type="text" class="form-control" name="Name Hotel">
+            </div>
+             <div class="form-group">
+              <label for="title">Address Hotel</label>
+              <input type="text" class="form-control" name="Address Hotel">
+            </div>
+            <div class="form-group">
+              <label for="title">City</label>
+              <input type="text" class="form-control" name="City">
+            </div>
+            <div class="form-group">
+              <label for="title">Price</label>
+              <input type="text" class="form-control" name="Price">
+            </div>
+            <div class="form-group">
+              <label for="category">Rental type</label>
+              <select class="form-control" name="Rental type">
+                <option value="Single Room">Single Room</option>
+                <option value="">Double Room</option>
+                <option value="Double Room">Deluxe Room</option>
+                <option value="Dorm Room">Dorm Room</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="category">Kind of room</label>
+              <select class="form-control" name="Kind of room">
+                <option value="Single Room">Single Room</option>
+                <option value="">Double Room</option>
+                <option value="Double Room">Deluxe Room</option>
+                <option value="Dorm Room">Dorm Room</option>
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <input type="file" name="file1">
+            </div>
+            <div class="form-group">
+              <input type="file" name="file2">
+            </div>
+            <div class="form-group">
+              <input type="file" name="file3">
+            </div>
+            <div class="form-group">
+              <label for="category">Bathroom</label>
+              <select class="form-control" name="Bathroom">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="category">Bed</label>
+              <select class="form-control" name="Bed">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="category">Amount of people</label>
+              <select class="form-control" name="Amount of people">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="body">Detail</label>
+              <textarea name="Detail" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer">
+                <input class="btn btn-primary" type="submit" value="Save">
+            </div>
+            {% csrf_token %}
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+{%endblock content%}

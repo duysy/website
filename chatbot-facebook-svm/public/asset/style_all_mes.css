@@ -1,0 +1,32 @@
+
+td{
+    position: relative;
+    height: 2rem;
+}
+
+input{
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+.show_detail{
+    width: 100%;
+     max-height:600% ;
+    background-color: rgb(214, 202, 202);
+    position: absolute;
+    top: 2rem;
+    overflow: auto;
+    display: none;
+    z-index: 100;
+
+
+}
+.show_detail ul li{
+    list-style-type: none;
+    border-bottom: 2px palegreen solid;
+    height: 2rem;
+}
+.show_detail ul li:hover{
+    border-bottom: 2px rgb(73, 218, 73) solid;
+    background-color: palegreen;
+}

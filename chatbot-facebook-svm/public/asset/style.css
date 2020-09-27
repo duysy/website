@@ -1,0 +1,44 @@
+
+/* main center */
+
+.data_train{
+    height: 70vh; /* For 100% screen height */
+
+    overflow: auto;
+}
+
+#show_seting_data ,#show_insert_data{
+    padding: 1rem;
+    position: fixed;
+    width: 80%;
+    height: 80%;
+    top: calc((100% - 80%)/2);
+    left: calc((100% - 80%)/2);
+    background-color:#F8F8F8;
+    border-radius: 9px;
+    border: 1px slategray solid;
+    overflow: auto;
+}
+
+
+
+.btn_delete:hover,
+.btn_update:hover {
+    background-color: #FA8072;
+    border-radius:10px;
+}
+.button_close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+input{
+    outline-style: none;
+    background-color:#FFFFFF;
+    border:none;
+    height: 100%;
+    width: 100%;
+}
+.add_data img{
+    margin-top: 2rem;
+}

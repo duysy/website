@@ -1,0 +1,8 @@
+##Tạo một projact laravel mới create-project laravel/laravel {ten project}
+##khi bi loi 4505 database vao mysql workplace
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+##Tao mo ban moi php {
+php artisan make:migration create_{tenbang}_table --create={tenbang}
+php artisan migrate
+
+}

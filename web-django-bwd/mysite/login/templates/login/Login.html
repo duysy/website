@@ -1,0 +1,41 @@
+{%extends "login/menubar.html"%}
+
+{%block content%}
+
+
+  <header id="home-section" >
+    <div class="dark-overlay" >
+      <div class="home-inner container" style="display: flex;" >
+        <div style="width: 400px ; margin: auto     ">
+            <div class="card bg-primary text-center card-form">
+              <div class="card-body">
+                <h3>Login now</h3>
+                <p>Please fill out this form to login</p>
+                <form method="post" action="{%url 'login:login'%}">
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="Username" name="Username">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control form-control-lg" placeholder="Password" name="Password">
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-outline-light btn-block">
+                  </div>
+                   <div class="form-group">
+                    <a href="{%url 'login:register'%}" style="color: black"> Bạn chưa có tài khoản</a>
+                  </div>
+                   <div class="form-group">
+                    <a href="#" style="color: black"> Quên mật khẩu</a>
+                  </div>
+
+
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </header>
+
+{%endblock content%}

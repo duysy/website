@@ -1,0 +1,235 @@
+{%extends "polls/menubar.html"%}
+{% load static %}
+{%load polls_extras%}
+{%block content%}
+
+  <!-- SHOWCASE SLIDER -->
+
+  <section id="showcase">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+        <div class="carousel-inner">
+           {%for i in object.link_anh_set.all%}
+          {%if forloop.counter == 1%}
+        <div class="carousel-item carousel-image-1 active">
+          {%else%}
+          <div class="carousel-item carousel-image-1 ">
+          {%endif%}
+          <div class="container" style="margin-top: 20px;">
+            <img src="{%static 'management/img-hotel'%}/{{i.Link}}" style="width:100%" alt="">
+          </div>
+        </div>
+
+          {%endfor%}
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+<hr>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>{{object.Dia_chi}} - {{object.Ten_khach_san}}</h2>
+          <p class="pt-4">accomodation code: {{object.id}}</p>
+          <div class="pt-4">
+
+
+            <div class="container">
+
+
+              <div class="row">
+
+                <div class="col-md-2 text-center">
+                  <i class="fas fa-building fa-3x"></i>
+                  <p>Apartment</p>
+                </div>
+                <div class="col-md-2 text-center">
+                  <i class="fas fa-home fa-3x"></i>
+                  <p>{{object.Loai_cho_thue}}</p>
+                </div>
+                <div class="col-md-2 text-center">
+                  <i class="fas fa-bath fa-3x"></i>
+                  <p>{{object.Phong_tam}}-Bathroom</p>
+                </div>
+                <div class="col-md-2 text-center">
+                  <i class="fas fa-bed fa-3x"></i>
+                  <p>{{object.So_giuong}}- Bed</p>
+                </div>
+                <div class="col-md-2 text-center">
+                  <i class="fas fa-door-open fa-3x"></i>
+                  <p>{{object.Loai_phong}}</p>
+                </div>
+                <div class="col-md-2 text-center">
+                  <i class="fas fa-user-friends fa-3x"></i>
+                  <p>{{object.So_nguoi}}-People</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <p id="facilities" class="font-weight-bold">About Commodation</p>
+              <span class="border-bottom-yellow d-block mb-2" style="width:70px"></span>
+            </div>
+            <p class="text-center">
+              {{object.Chi_tiet}}
+            </p>
+
+          </div>
+          <div>
+          <section class="content-section" id="Tourroom">
+          <div class="container">
+            <div class="content-section-heading">
+              <h3 id="facilities" class="pt-4 font-weight-bold">Tour this House</h3>
+
+            </div>
+            <div class="row no-gutters pt-4">
+              <div class="col-lg-6">
+                <a class="Tourroom-item" href="#">
+                  <span class="caption">
+                    <span class="caption-content">
+                      <h2>Bed room</h2>
+                    </span>
+                  </span>
+                  <img class="img-fluid" src="{%static 'polls/img-static/room1.jpg'%}" alt="">
+                </a>
+              </div>
+              <div class="col-lg-6">
+                <a class="Tourroom-item" href="#">
+                  <span class="caption">s
+                    <span class="caption-content">
+                      <h2>Toilet</h2>
+
+                    </span>
+                  </span>
+                  <img class="img-fluid" src="{%static 'polls/img-static/Toilet.jpg'%}" alt="">
+                </a>
+              </div>
+              <div class="col-lg-6">
+                <a class="Tourroom-item" href="#">
+                  <span class="caption">
+                    <span class="caption-content">
+                      <h2>Dinning room</h2>
+
+                    </span>
+                  </span>
+                  <img class="img-fluid" src="{%static 'polls/img-static/diningroom.jpg'%}" alt="">
+                </a>
+              </div>
+              <div class="col-lg-6">
+                <a class="Tourroom-item" href="#">
+                  <span class="caption">
+                    <span class="caption-content">
+                      <h2>Kitchen</h2>
+
+                    </span>
+                  </span>
+                  <img class="img-fluid" src="{%static 'polls/img-static/kitchen.jpg'%}" alt="">
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+         </div>
+          <div>
+            <div>
+              <p id="facilities" class="font-weight-bold">FACILITIES</p>
+              <span class="border-bottom-yellow d-block mb-2" style="width:70px"></span>
+            </div>
+            <div class="col-lg-8 offset-lg-1 p-sm-3">
+              <img class="w-100" src="{%static 'polls/img-static/all_amenities.png'%}" alt="all amenities">
+            </div>
+          </div>
+        </div>
+
+<br>
+
+        <div class="col-md-4">
+          <div class="card" style="position: -webkit-sticky;
+          position: sticky;
+          top: 20px;">
+            <div class="card-body">
+
+              <div style="font-size: 20px;" class="price text-center font-weight-bold">
+                <p>${{object.Gia_phong}}/night</p>
+              </div>
+              <form method="post" action="{%url 'polls:services_search' object.id%}">
+                {% csrf_token %}
+
+                <div class="form-group">
+                  <label for="">Name</label>
+                  <input type="" class="form-control" id="" placeholder="Jack" name="Name">
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" id="" placeholder="abx@example.com" name="Email">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="">Phone Number</label>
+                    <input type="number" class="form-control" id="" placeholder="+84" name="Phone Number">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="">Check In Date</label>
+                    <input type="date" class="form-control" id="" placeholder="Check In Date" name="Check In Date">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Check Out Date</label>
+                    <input type="date" class="form-control" id="" placeholder="Check Out Date" name="Check Out Date">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="">Identity Number</label>
+                    <input type="number" class="form-control" id="" placeholder="" name="Identity Number">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Year Of Birth</label>
+                    <input type="number" class="form-control" id="" placeholder="1990" name="Year Of Birth">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputPassword4">Note</label>
+                  <input type="" class="form-control" id="" placeholder="Do you want something's special?" name="Note" value="">
+                </div>
+
+                <input type="submit" class="btn btn-primary btn-lg mt-3 btn-block" value="Instant Book">
+
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<br><br>
+<hr width="90%" size="10px" />
+  <h1 style="font-family:'Courier New', Courier, monospace" class="ml-5">COMMENTS</h1>
+
+{%for i in object.binh_luan_set.all%}
+  <a class="  ml-5 mt-5" href="#"><img class="lazyloaded"
+      src="https://graph.facebook.com/2298336880411650/picture?type=small"></div>{{i.name}}</a>
+      <span style="margin-left: 100px;color: #322EE0;font-size: 25px"> Classification:</span>
+      <span style="color:red;font-size: 25px">{{i.So_sao}}</span>
+  <p class="px-5 pt-3">{{i.Text_binh_luan}}</p>
+<hr width="90%" size="10px" />
+
+{%endfor%}
+
+{%endblock content%}

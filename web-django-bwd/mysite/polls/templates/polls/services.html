@@ -1,0 +1,215 @@
+{%extends "polls/menubar.html"%}
+{%block content%}
+{%load static%}
+{%load polls_extras%}
+    <section class="ftco-section ftco-no-pb ftco-no-pt" style="margin-top: 70px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="search-wrap-1 ftco-animate p-4">
+                        <form action="{% url 'polls:services'%}" class="search-property-1" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg align-items-end">
+                                    <div class="form-group">
+                                        <div class="form-field">
+                                            <label class="text-white" for="#">Destination</label>
+                                            <div class="select-wrap">
+                                                <select name="Destination" class="form-control">
+                                                    {%for i in noiden%}
+                                                    <option value="{{i.Thanh_pho}}">{{i.Thanh_pho}}</option>
+                                                    {%endfor%}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg align-items-end">
+                                    <div class="form-group">
+                                        <div class="form-field">
+                                            <label class="text-white" for="#">Check-in date</label>
+                                            <input type="date" name="Check In Date" class="form-control checkout_date"
+                                                placeholder="Check In Date">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg align-items-end">
+                                    <div class="form-group">
+                                        <div class="form-field">
+                                            <label class="text-white" for="#">Check-out date</label>
+                                            <input type="date" name="Check Out Date" class="form-control checkout_date"
+                                                placeholder="Check Out Date">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg align-items-end">
+                                    <div class="form-group">
+                                        <div class="form-field">
+                                            <label class="text-white" for="#">Price Limit</label>
+                                            <div class="select-wrap">
+                                                <select name="Price Limit" id="" class="form-control">
+                                                    <option value="5">$5</option>
+                                                    <option value="10">$10</option>
+                                                    <option value="20">$20</option>
+                                                    <option value="50">$50</option>
+                                                    <option value="100">$100</option>
+                                                    <option value="200">$200</option>
+                                                    <option value="250">$250</option>
+                                                    <option value="300">$300</option>
+                                                    <option value="350">$350</option>
+                                                    <option value="400">$400</option>
+                                                    <option value="450">$450</option>
+                                                    <option value="500">$500</option>
+                                                    <option value="550">$550</option>
+                                                    <option value="600">$600</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg align-self-end">
+                                    <div class="form-group">
+                                        <div class="form-field">
+                                            <input type="submit" value="Search" class="form-control btn btn-primary">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    </div>
+    </div>
+
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 heading-section text-center ftco-animate">
+                    <h2 class="mt-5">Best Place to Travel</h2>
+                    <p>I Follow My Heart And It Led Me to The Airport</p>
+                </div>
+            </div>
+            <div class="row">
+
+
+
+ <!--iiiiiiiiiiiiiiiiiiiiiiiiiiiii-->
+          {%if object %}
+          {%for i in object%}
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project" >
+            <div class="img">
+                <div style="overflow: hidden;width:100%;height: 300px" >
+                    <div  style=" width:200%;height:200%px;position: absolute;" >
+                            {%for img in i.link_anh_set.all%}
+                            {%if forloop.counter == 1 %}
+
+                            <img src="{%static 'management/img-hotel/'%}{{img.Link}}" class="img-fluid" alt="" style=" width:100%;height: 100%">
+                            {%endif%}
+                            {%endfor%}
+                    </div>
+                </div>
+            </div>
+            <div class="text" >
+              <h4 class="price">${{i.Gia_phong}}</h4>
+              <span>{{i.Loai_phong}}</span>
+              <h3><a href="{%url 'polls:services_search' i.id%}"> {%get_modules_Chu_cho_thue i.phong_id%}</a></h3>
+              <div class="star d-flex clearfix">
+                <div class="mr-auto float-left">
+
+                </div>
+                <div class="float-right">
+                  <span class="rate"><a href="#">(120)</a></span>
+                </div>
+              </div>
+            </div>
+            <a href="pic/pic2.jpg" class=" d-flex justify-content-center align-items-center"></a>
+          </div>
+        </div>
+        {%endfor%}
+          {%else%}
+          <p>No information</p>
+          {%endif%}
+
+
+            </div>
+        </div>
+    </section>
+    <section>
+                <div class="row mt-5">
+                    <div class="col text-center">
+                        <div class="block-27">
+                            <ul>
+                                <li><a href="#">&lt;</a></li>
+                                <li class="active"><span>1</span></li>
+                                <li><a href="2">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&gt;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+<!-- PHOTO GALLERY -->
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <h1 class="text-center">Photo Gallery</h1>
+            <p class="text-center">Check out our photos</p>
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <a href="https://source.unsplash.com/random/560x560" data-toggle="lightbox"
+                        data-gallery="img-gallery" data-height="560" data-width="560">
+                        <img src="https://source.unsplash.com/random/560x560" alt="" class="img-fluid">
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="https://source.unsplash.com/random/561x561" data-toggle="lightbox"
+                        data-gallery="img-gallery" data-height="561" data-width="561">
+                        <img src="https://source.unsplash.com/random/561x561" alt="" class="img-fluid">
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="https://source.unsplash.com/random/562x562" data-toggle="lightbox"
+                        data-gallery="img-gallery" data-height="562" data-width="562">
+                        <img src="https://source.unsplash.com/random/562x562" alt="" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <a href="https://source.unsplash.com/random/563x563" data-toggle="lightbox"
+                        data-gallery="img-gallery" data-height="563" data-width="563">
+                        <img src="https://source.unsplash.com/random/563x563" alt="" class="img-fluid">
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="https://source.unsplash.com/random/564x564" data-toggle="lightbox"
+                        data-gallery="img-gallery" data-height="564" data-width="564">
+                        <img src="https://source.unsplash.com/random/564x564" alt="" class="img-fluid">
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="https://source.unsplash.com/random/565x565" data-toggle="lightbox"
+                        data-gallery="img-gallery" data-height="565" data-width="565">
+                        <img src="https://source.unsplash.com/random/565x565" alt="" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{%endblock content%}

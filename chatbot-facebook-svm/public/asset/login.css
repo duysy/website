@@ -1,0 +1,57 @@
+body{
+    background-image: url("../img/backgroud.jpg");
+}
+
+main{
+    width: 100vw;
+    height: 100vh;
+    color: white !important;
+
+}
+
+.login_container{
+    background-color: rgba(84, 202, 113, 0.7);;
+    border-radius: 5px;
+    padding: 1.5rem;
+    justify-content: flex-end;
+}
+.item{
+    margin-bottom: 1.5rem;
+    width: 100%;
+    line-height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.item nav{
+    margin-right: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+}
+nav{
+    text-align: start;
+    margin-bottom: 1.5rem;
+    font-size: 3rem;
+}
+
+.item input{
+    height: 2rem;
+    border: 2px #ffffff solid;
+    width: 15rem;
+    background-color: rgb(182, 235, 202);
+
+}
+
+.button input{
+    height: 2.5rem;
+    background-color: rgb(139, 219, 139);
+    border: none;
+    border: 2px wheat solid;
+    font-size: 1.5rem;
+    color: white !important;
+}
+.button input:hover{
+
+    background-color: rgb(177, 184, 192);
+}
